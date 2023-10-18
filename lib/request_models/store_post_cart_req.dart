@@ -6,7 +6,7 @@ class StorePostCartReq {
 
   String? regionId;
   String? countryCode;
-  List<Item>? items;
+  List<AdditionalItem>? items;
   dynamic context;
   String? salesChannelId;
 
@@ -22,9 +22,9 @@ class StorePostCartReq {
     regionId = json['region_id'];
     countryCode = json['country_code'];
     if (json['items'] != null) {
-      items = <Item>[];
+      items = <AdditionalItem>[];
       json['items'].forEach((v) {
-        items!.add(Item.fromJson(v));
+        items!.add(AdditionalItem.fromJson(v));
       });
     }
     context = json['context'];

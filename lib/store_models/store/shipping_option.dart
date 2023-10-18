@@ -1,80 +1,78 @@
-
-
 import 'index.dart';
 
 class ShippingOption {
   /// The ID of the Shipping Option.
-  String? id;
+  final String? id;
 
   /// The name given to the Shipping Option - this may be displayed to the Customer.
   ///
   /// Example: "PostFake Standard"
-  String? name;
+  final String? name;
 
   /// The region's ID
   ///
   /// Example: "reg_01G1G5V26T9H8Y0M4JNE3YGA4G"
-  String? regionId;
+  final String? regionId;
 
   /// A region object. Available if the relation region is expanded.
-  Region? region;
+  final Region? region;
 
   /// The ID of the Shipping Profile that the shipping option belongs to. Shipping Profiles have a set of defined Shipping Options that can be used to Fulfill a given set of Products.
   ///
   /// Example: "sp_01G1G5V239ENSZ5MV4JAR737BM"
-  String? profileId;
+  final String? profileId;
 
   /// Shipping Profiles have a set of defined Shipping Options that can be used to fulfill a given set of Products.
-  ShippingProfile? profile;
+  final ShippingProfile? profile;
 
   /// The id of the Fulfillment Provider, that will be used to process Fulfillments from the Shipping Option.
   ///
   /// Example: "manual"
-  String? providerId;
+  final String? providerId;
 
   /// Represents a fulfillment provider plugin and holds its installation status.
-  FulfillmentProvider? provider;
+  final FulfillmentProvider? provider;
 
   /// The type of pricing calculation that is used when creating Shipping Methods from the Shipping Option. Can be flat rate for fixed prices or calculated if the Fulfillment Provider can provide price calculations.
-  ShippingOptionPriceType? priceType;
+  final ShippingOptionPriceType? priceType;
 
   /// The amount to charge for shipping when the Shipping Option price type is flat_rate.
   ///
   /// Example: 200
-  int? amount;
+  final int? amount;
 
   /// Flag to indicate if the Shipping Option can be used for Return shipments.
   ///
   /// Default: false
-  bool isReturn = false;
+  final bool isReturn;
 
   /// Flag to indicate if the Shipping Option usage is restricted to admin users.
   ///
   /// Default: false
-  bool adminOnly = false;
+  final bool adminOnly;
 
   /// The requirements that must be satisfied for the Shipping Option to be available for a Cart. Available if the relation requirements is expanded.
-  List<ShippingOptionRequirement>? requirements;
+  final List<ShippingOptionRequirement>? requirements;
 
   /// The data needed for the Fulfillment Provider to identify the Shipping Option.
-  Map<String, dynamic>? data;
+  final Map<String, dynamic>? data;
 
   /// [EXPERIMENTAL] Does the shipping option price include tax
   ///
   /// Default: false
-  bool? includesTax;
+  final bool? includesTax;
 
   /// The date with timezone at which the resource was created.
-  DateTime? createdAt;
+  final DateTime? createdAt;
 
   /// The date with timezone at which the resource was updated.
-  DateTime? updatedAt;
+  final DateTime? updatedAt;
 
   /// The date with timezone at which the resource was deleted.
-  DateTime? deletedAt;
+  final DateTime? deletedAt;
 
   /// An optional key-value map with additional details
-  Map<String, dynamic>? metadata;
+  final Map<String, dynamic>? metadata;
 
   ShippingOption({
     this.id,
@@ -98,31 +96,36 @@ class ShippingOption {
     this.metadata,
   });
 
-  ShippingOption.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    regionId = json['region_id'];
-    region = json['region'] != null ? Region.fromJson(json['region']) : null;
-    profileId = json['profile_id'];
-    profile = json['profile'] != null ? ShippingProfile.fromJson(json['profile']) : null;
-    providerId = json['provider_id'];
-    provider = json['provider'] != null ? FulfillmentProvider.fromJson(json['provider']) : null;
-    priceType = json['price_type'] != null
-        ? ShippingOptionPriceType.values.firstWhere((e) => e.value == json['price_type'])
-        : null;
-    amount = json['amount'];
-    isReturn = json['is_return'];
-    adminOnly = json['admin_only'];
+  factory ShippingOption.fromJson(Map<String, dynamic> json) {
+    List<ShippingOptionRequirement>? requirements;
     if (json['requirements'] != null) {
       requirements = <ShippingOptionRequirement>[];
       json['requirements'].forEach((e) => requirements!.add(ShippingOptionRequirement.fromJson(e)));
     }
-    data = json['data'];
-    includesTax = json['includes_tax'];
-    createdAt = DateTime.tryParse(json['created_at'] ?? '')?.toLocal();
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '')?.toLocal();
-    deletedAt = DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal();
-    metadata = json['metadata'];
+
+    return ShippingOption(
+      id: json['id'],
+      name: json['name'],
+      regionId: json['region_id'],
+      region: json['region'] != null ? Region.fromJson(json['region']) : null,
+      profileId: json['profile_id'],
+      profile: json['profile'] != null ? ShippingProfile.fromJson(json['profile']) : null,
+      providerId: json['provider_id'],
+      provider: json['provider'] != null ? FulfillmentProvider.fromJson(json['provider']) : null,
+      priceType: json['price_type'] != null
+          ? ShippingOptionPriceType.values.firstWhere((e) => e.value == json['price_type'])
+          : null,
+      amount: json['amount'],
+      isReturn: json['is_return'],
+      adminOnly: json['admin_only'],
+      data: json['data'],
+      includesTax: json['includes_tax'],
+      requirements: requirements,
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+      deletedAt: DateTime.tryParse(json['deleted_at'] ?? '')?.toLocal(),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {

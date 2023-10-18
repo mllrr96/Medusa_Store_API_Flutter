@@ -1,14 +1,17 @@
-class Item {
+class AdditionalItem {
+  /// The id of the product variant.
   final String? variantId;
+
+  /// The quantity of the variant.
   final int? quantity;
 
-  Item({
+  AdditionalItem({
     required this.variantId,
     required this.quantity,
   });
 
-  factory Item.fromJson(Map<String, dynamic> json) {
-    return Item(variantId: json['variant_id'], quantity: json['quantity']);
+  factory AdditionalItem.fromJson(Map<String, dynamic> json) {
+    return AdditionalItem(variantId: json['variant_id'], quantity: json['quantity']);
   }
 
   Map<String, dynamic> toJson() {
