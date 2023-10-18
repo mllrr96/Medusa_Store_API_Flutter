@@ -1,4 +1,5 @@
-import 'package:medusa_store_flutter/models/store/shipping_option.dart';
+
+import 'shipping_option.dart';
 
 class ShippingOptionRequirement {
   String? id;

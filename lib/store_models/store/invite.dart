@@ -1,5 +1,6 @@
 
-import 'package:medusa_store_flutter/models/store/user.dart';
+
+import 'user.dart';
 
 class Invite {
   String? id;

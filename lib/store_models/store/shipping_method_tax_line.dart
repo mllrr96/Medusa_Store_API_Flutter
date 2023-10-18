@@ -1,5 +1,6 @@
 
-import 'package:medusa_store_flutter/models/store/shipping_method.dart';
+
+import 'shipping_method.dart';
 
 class ShippingMethodTaxLine {
   String? id;

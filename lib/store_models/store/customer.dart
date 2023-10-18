@@ -1,6 +1,6 @@
 import 'address.dart';
 import 'customer_group.dart';
-import 'order.dart';
+import '../orders/order.dart';
 
 class Customer {
   Customer(

@@ -1,5 +1,5 @@
 
-import 'package:medusa_store_flutter/models/store/region.dart';
+import 'region.dart';
 
 class Country {
   /// The country's ID

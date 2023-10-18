@@ -1,5 +1,6 @@
 
-import 'package:medusa_store_flutter/models/store/user.dart';
+
+import 'package:medusa_store_flutter/store_models/store/user.dart';
 
 class BatchJob {
   String? id;

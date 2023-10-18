@@ -1,4 +1,4 @@
-import 'index.dart';
+import '../store/index.dart';
 
 class Order {
   String? id;

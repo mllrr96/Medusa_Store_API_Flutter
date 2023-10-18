@@ -1,4 +1,5 @@
 
+
 import 'claim_item.dart';
 
 class ClaimImage {
