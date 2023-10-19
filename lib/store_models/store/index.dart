@@ -40,7 +40,7 @@ export 'order_edit.dart';
 export 'order_item_change.dart';
 export 'payment.dart';
 export 'payment_provider.dart';
-export 'payment_session.dart';
+export '../payment_collection/payment_session.dart';
 export 'price_list.dart';
 export '../products/product.dart';
 export '../products/product_collection.dart';

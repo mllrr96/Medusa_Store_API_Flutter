@@ -15,6 +15,8 @@ class Region {
   ///
   /// Example: "usd"
   final String? currencyCode;
+
+  /// The details of the currency used in the region.
   final Currency? currency;
 
   /// The tax rate that should be charged on purchases in the Region.

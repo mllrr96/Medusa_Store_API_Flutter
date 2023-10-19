@@ -1,54 +1,53 @@
-
 import 'index.dart';
 
 class TaxRate {
   /// The tax rate's ID
   ///
   /// Example: "txr_01G8XDBAWKBHHJRKH0AV02KXBR"
-  String? id;
+  final String? id;
 
-  double? rate;
+  final double? rate;
 
   /// A code to identify the tax type by
-  String? code;
+  final String? code;
 
   /// A human friendly name for the tax
-  String? name;
+  final String? name;
 
   /// The id of the Region that the rate belongs to
-  String? regionId;
+  final String? regionId;
 
   /// A region object.
   ///
   /// Available if the relation region is expanded.
-  Region? region;
+  final Region? region;
 
   /// An optional key-value map with additional details
-  Map<String, dynamic>? metadata;
+  final Map<String, dynamic>? metadata;
 
   /// The products that belong to this tax rate.
   ///
   /// Available if the relation products is expanded.
-  List<Product>? products;
+  final List<Product>? products;
 
   /// The product types that belong to this tax rate.
   ///
   /// Available if the relation product_types is expanded.
-  List<ProductType>? productTypes;
+  final List<ProductType>? productTypes;
 
   /// The shipping options that belong to this tax rate.
   ///
   /// Available if the relation shipping_options is expanded.
-  List<ShippingOption>? shippingOptions;
+  final List<ShippingOption>? shippingOptions;
 
   /// The count of products
-  int? productCount;
+  final int? productCount;
 
   /// The count of product types
-  int? productTypeCount;
+  final int? productTypeCount;
 
   /// The count of shipping options
-  int? shippingOptionCount;
+  final int? shippingOptionCount;
 
   TaxRate({
     this.id,
@@ -66,14 +65,11 @@ class TaxRate {
     this.shippingOptionCount,
   });
 
-  TaxRate.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    rate = json['rate'];
-    code = json['code'];
-    name = json['name'];
-    regionId = json['region_id'];
-    region = json['region'] != null ? Region.fromJson(json['region']) : null;
-    metadata = json['metadata'];
+  factory TaxRate.fromJson(Map<String, dynamic> json) {
+    List<Product>? products;
+    List<ProductType>? productTypes;
+    List<ShippingOption>? shippingOptions;
+
     if (json['products'] != null) {
       products = <Product>[];
       json['products'].forEach((v) {
@@ -92,9 +88,22 @@ class TaxRate {
         shippingOptions!.add(ShippingOption.fromJson(v));
       });
     }
-    productCount = json['product_count'];
-    productTypeCount = json['product_type_count'];
-    shippingOptionCount = json['shipping_option_count'];
+
+    return TaxRate(
+      id: json['id'],
+      rate: json['rate'],
+      code: json['code'],
+      name: json['name'],
+      regionId: json['region_id'],
+      productCount: json['product_count'],
+      productTypeCount: json['product_type_count'],
+      shippingOptionCount: json['shipping_option_count'],
+      region: json['region'] != null ? Region.fromJson(json['region']) : null,
+      products: products,
+      productTypes: productTypes,
+      shippingOptions: shippingOptions,
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -121,4 +130,3 @@ class TaxRate {
     return data;
   }
 }
-
