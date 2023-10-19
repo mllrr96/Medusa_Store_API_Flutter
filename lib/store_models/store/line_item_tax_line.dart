@@ -1,16 +1,42 @@
-
 import 'line_item.dart';
 
 class LineItemTaxLine {
-  String? id;
-  String? itemId;
-  LineItem? item;
-  String? code;
-  String? name;
-  num? rate;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  Map<String, dynamic>? metadata;
+  /// The line item tax line's id
+  ///
+  /// Example: "litl_01G1G5V2DRX1SK6NQQ8VVX4HQ8"
+  final String? id;
+
+  /// The id of the line item
+  ///
+  /// Example: "item_01G8ZC9GWT6B2GP5FSXRXNFNGN"
+  final String? itemId;
+
+  /// The details of the line item.
+  final LineItem? item;
+
+  /// A code to identify the tax type by
+  ///
+  /// Example: "tax01"
+  final String? code;
+
+  /// A human friendly name for the tax
+  ///
+  /// Example: "Tax Example"
+  final String? name;
+
+  /// The numeric rate to charge tax by
+  ///
+  /// Example: 10
+  final num? rate;
+
+  /// The date with timezone at which the resource was created.
+  final DateTime? createdAt;
+
+  /// The date with timezone at which the resource was updated.
+  final DateTime? updatedAt;
+
+  /// An optional key-value map with additional details
+  final Map<String, dynamic>? metadata;
 
   LineItemTaxLine({
     this.id,
@@ -24,16 +50,18 @@ class LineItemTaxLine {
     this.metadata,
   });
 
-  LineItemTaxLine.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    itemId = json['item_id'];
-    item = json['item'] != null ? LineItem.fromJson(json['item']) : null;
-    code = json['code'];
-    name = json['name'];
-    rate = json['rate'];
-    createdAt = DateTime.tryParse(json['created_at'] ?? '')?.toLocal();
-    updatedAt = DateTime.tryParse(json['updated_at'] ?? '')?.toLocal();
-    metadata = json['metadata'] ;
+  factory LineItemTaxLine.fromJson(Map<String, dynamic> json) {
+    return LineItemTaxLine(
+      id: json['id'],
+      itemId: json['item_id'],
+      item: json['item'] != null ? LineItem.fromJson(json['item']) : null,
+      code: json['code'],
+      name: json['name'],
+      rate: json['rate'],
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
+      metadata: json['metadata'],
+    );
   }
 
   Map<String, dynamic> toJson() {

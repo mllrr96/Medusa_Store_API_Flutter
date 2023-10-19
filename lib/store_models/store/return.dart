@@ -116,9 +116,9 @@ class Return {
       refundAmount: json['refund_amount'],
       noNotification: json['no_notification'],
       idempotencyKey: json['idempotency_key'],
-      receivedAt: DateTime.tryParse(json['received_at'] ?? ''),
-      createdAt: DateTime.tryParse(json['received_at'] ?? ''),
-      updatedAt: DateTime.tryParse(json['received_at'] ?? ''),
+      receivedAt: DateTime.tryParse(json['received_at'] ?? '')?.toLocal(),
+      createdAt: DateTime.tryParse(json['created_at'] ?? '')?.toLocal(),
+      updatedAt: DateTime.tryParse(json['updated_at'] ?? '')?.toLocal(),
       metadata: json['metadata'],
     );
   }
