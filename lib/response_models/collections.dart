@@ -1,14 +1,10 @@
 import '../store_models/store/index.dart';
-import 'common.dart';
-
 
 class StoreCollectionsRes {
   ProductCollection? collection;
 
   StoreCollectionsRes.fromJson(Map<String, dynamic> json) {
-    collection = json['collection'] != null
-        ? ProductCollection.fromJson(json["collection"])
-        : null;
+    collection = json['collection'] != null ? ProductCollection.fromJson(json["collection"]) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -20,19 +16,21 @@ class StoreCollectionsRes {
   }
 }
 
-class StoreCollectionsListRes extends PaginatedResponse {
-  List<ProductCollection>? collections;
+class StoreCollectionsListRes {
+  final List<ProductCollection>? collections;
+  StoreCollectionsListRes(this.collections);
 
-  StoreCollectionsListRes.fromJson(json) : super.fromJson(json) {
+  factory StoreCollectionsListRes.fromJson(json) {
     if (json['collections'] != null) {
-      collections = <ProductCollection>[];
-      json['collections'].forEach((v) {
-        collections?.add(ProductCollection.fromJson(v));
-      });
+      final collection = List<ProductCollection>.from(
+          (json['collections'] as List<Map<String, dynamic>>).map((x) => ProductCollection.fromJson(x)));
+
+      return StoreCollectionsListRes(collection);
     }
+
+    return StoreCollectionsListRes(null);
   }
 
-  @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['collections'] = collections?.map((e) => e.toJson()).toList();
