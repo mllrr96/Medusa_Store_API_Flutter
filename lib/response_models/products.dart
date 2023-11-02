@@ -5,9 +5,10 @@ class StoreProductsListRes {
   StoreProductsListRes(this.products);
   factory StoreProductsListRes.fromJson(json) {
     if (json['products'] != null) {
-      final products =
-          List<Product>.from((json['products'] as List<Map<String, dynamic>>).map((x) => Product.fromJson(x)));
-
+      var products = <Product>[];
+      json['products'].forEach((v) {
+        products.add(Product.fromJson(v));
+      });
       return StoreProductsListRes(products);
     }
 
