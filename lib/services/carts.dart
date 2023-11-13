@@ -265,4 +265,94 @@ class CartsResource extends BaseResource {
       rethrow;
     }
   }
+
+  /// Generates a Line Item with a given Product Variant and adds it to the Cart
+  ///
+  /// Required fields:
+  ///
+  /// cartId: The id of the cart to add the line item to.
+  ///
+  /// variantId: The id of the product variant to generate the line item from.
+  ///
+  /// quantity: The quantity of the product variant to add to the line item.
+  Future<StoreCartsRes?> addLineItem(
+      {required String cartId,
+      required String variantId,
+      required int quantity,
+      Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.post('/store/carts/$cartId/line-items', data: {
+        'variant_id': variantId,
+        'quantity': quantity,
+      });
+      if (response.statusCode == 200) {
+        return StoreCartsRes.fromJson(response.data);
+      } else {
+        throw response.statusCode!;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Update a line item's quantity.
+  ///
+  /// Required fields:
+  ///
+  /// cartId: The id of the cart to add the line item to.
+  ///
+  /// lineId: The id of the line item.
+  ///
+  /// quantity: The quantity of the product variant to add to the line item.
+  Future<StoreCartsRes?> updateLineItem(
+      {required String cartId,
+      required String lineId,
+      required int quantity,
+      Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.post('/store/carts/$cartId/line-items/$lineId', data: {'quantity': quantity});
+      if (response.statusCode == 200) {
+        return StoreCartsRes.fromJson(response.data);
+      } else {
+        throw response.statusCode!;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Delete a Line Item from a Cart. The payment sessions will be updated and the totals will be recalculated.
+  ///
+  /// Required fields:
+  ///
+  /// cartId: The id of the cart to add the line item to.
+  ///
+  /// lineId: The id of the line item.
+  Future<StoreCartsRes?> deleteLineItem(
+      {required String cartId,
+      required String lineId,
+      Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.delete('/store/carts/$cartId/line-items/$lineId');
+      if (response.statusCode == 200) {
+        return StoreCartsRes.fromJson(response.data);
+      } else {
+        throw response.statusCode!;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
 }
