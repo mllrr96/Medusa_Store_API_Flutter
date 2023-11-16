@@ -50,20 +50,37 @@ class StorePostCartsCartReq {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['region_id'] = regionId;
-    data['country_code'] = countryCode;
-    data['email'] = email;
-    data['billing_address'] = billingAddress;
-    data['shipping_address'] = shippingAddress;
+    if (regionId != null) {
+      data['region_id'] = regionId;
+    }
+    if (countryCode != null) {
+      data['country_code'] = countryCode;
+    }
+    if (email != null) {
+      data['email'] = email;
+    }
+    if (billingAddress != null) {
+      data['billing_address'] = billingAddress;
+    }
+    if (shippingAddress != null) {
+      data['shipping_address'] = shippingAddress;
+    }
+    if (customerId != null) {
+      data['customer_id'] = customerId;
+    }
+    if (context != null) {
+      data['context'] = context;
+    }
+    if (salesChannelId != null) {
+      data['sales_channel_id'] = salesChannelId;
+    }
+
     if (giftCards != null) {
       data['gift_cards'] = giftCards!.map((v) => v.toJson()).toList();
     }
     if (discounts != null) {
       data['discounts'] = discounts!.map((v) => v.toJson()).toList();
     }
-    data['customer_id'] = customerId;
-    data['context'] = context;
-    data['sales_channel_id'] = salesChannelId;
     return data;
   }
 }
