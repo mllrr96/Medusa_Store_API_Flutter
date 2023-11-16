@@ -78,7 +78,7 @@ class Country {
     json['name'] = name;
     json['iso_3'] = iso3;
     json['display_name'] = displayName;
-    // json['region_id'] = regionId;
+    json['region_id'] = regionId;
     return json;
   }
 }
