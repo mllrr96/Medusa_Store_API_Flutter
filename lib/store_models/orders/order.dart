@@ -118,7 +118,7 @@ class Order {
   final DateTime? canceledAt;
 
   /// Flag for describing whether or not notifications related to this should be send.
-  final bool noNotification;
+  final bool? noNotification;
 
   /// Randomly generated key used to continue the processing of the order in case of failure.
   final String? idempotencyKey;
@@ -208,7 +208,7 @@ class Order {
     this.items,
     this.giftCardTransactions,
     this.canceledAt,
-    this.noNotification = false,
+    this.noNotification,
     this.idempotencyKey,
     this.externalId,
     this.salesChannelId,
