@@ -11,21 +11,19 @@ class CustomersResource extends BaseResource {
   /// @param {StorePostCustomersReq} payload information of customer
   /// @param customHeaders
   /// @return { ResponsePromise<StoreCustomersRes>}
-  Future<StoreCustomersRes?> create(
-      {StorePostCustomersReq? req, Map<String, dynamic>? customHeaders}) async {
+  Future<StoreCustomersRes?> create({StorePostCustomersReq? req, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client
-          .post('/store/customers', data: req);
+      final response = await client.post('/store/customers', data: req);
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
         throw response.statusCode!;
       }
-    } catch (error,stackTrace) {
-      log(error.toString(),stackTrace:stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
       rethrow;
     }
   }
@@ -33,8 +31,7 @@ class CustomersResource extends BaseResource {
   ///Retrieves the customer that is currently logged
   /// @param customHeaders
   /// @return {ResponsePromise<StoreCustomersRes>}
-  Future<StoreCustomersRes?> retrieve(
-      {Map<String, dynamic>? customHeaders}) async {
+  Future<StoreCustomersRes?> retrieve({Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
@@ -57,22 +54,19 @@ class CustomersResource extends BaseResource {
   /// @param {StorePostCustomersCustomerReq} payload information to update customer with
   /// @param customHeaders
   /// @return {ResponsePromise<StoreCustomersRes>}
-  Future<StoreCustomersRes?> update(
-      {StorePostCustomersCustomerReq? req,
-      Map<String, dynamic>? customHeaders}) async {
+  Future<StoreCustomersRes?> update({StorePostCustomersCustomerReq? req, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client
-          .post('/store/customers/me', data: req);
+      final response = await client.post('/store/customers/me', data: req);
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
         throw response.statusCode!;
       }
-    } catch (error,stackTrace) {
-      log(error.toString(),stackTrace:stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
       rethrow;
     }
   }
@@ -83,21 +77,19 @@ class CustomersResource extends BaseResource {
   /// @return {ResponsePromise<StoreCustomersListOrdersRes>}
 
   Future<StoreCustomersListOrdersRes?> listOrders(
-      {Map<String, dynamic>? customHeaders}) async {
+      {Map<String, dynamic>? queryParameters, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.get(
-        '/store/customers/me/orders',
-      );
+      final response = await client.get('/store/customers/me/orders', queryParameters: queryParameters);
       if (response.statusCode == 200) {
         return StoreCustomersListOrdersRes.fromJson(response.data);
       } else {
         throw response.statusCode!;
       }
-    } catch (error,stackTrace) {
-      log(error.toString(),stackTrace:stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
       rethrow;
     }
   }
@@ -107,22 +99,19 @@ class CustomersResource extends BaseResource {
   /// @param customHeaders
   /// @return {ResponsePromise<StoreCustomersRes>}
   Future<StoreCustomersRes?> resetPassword(
-      {StorePostCustomersCustomerPasswordTokenReq? req,
-      Map<String, dynamic>? customHeaders}) async {
+      {StorePostCustomersCustomerPasswordTokenReq? req, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post(
-          '/store/customers/password-reset',
-          data: req);
+      final response = await client.post('/store/customers/password-reset', data: req);
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
         throw response.statusCode!;
       }
-    } catch (error,stackTrace) {
-      log(error.toString(),stackTrace:stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
       rethrow;
     }
   }
@@ -133,22 +122,19 @@ class CustomersResource extends BaseResource {
   /// @param customHeaders
   /// @return {ResponsePromise}
   Future generatePasswordToken(
-      {StorePostCustomersCustomerPasswordTokenReq? req,
-      Map<String, dynamic>? customHeaders}) async {
+      {StorePostCustomersCustomerPasswordTokenReq? req, Map<String, dynamic>? customHeaders}) async {
     try {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post(
-          '/store/customers/password-token',
-          data: req);
+      final response = await client.post('/store/customers/password-token', data: req);
       if (response.statusCode == 200) {
         return response.data;
       } else {
         throw response.statusCode!;
       }
-    } catch (error,stackTrace) {
-      log(error.toString(),stackTrace:stackTrace);
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
       rethrow;
     }
   }

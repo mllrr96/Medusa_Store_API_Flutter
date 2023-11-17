@@ -21,7 +21,10 @@ class StoreCustomersListOrdersRes {
   StoreCustomersListOrdersRes(this.orders);
   factory StoreCustomersListOrdersRes.fromJson(json) {
     if (json['orders'] != null) {
-      final orders = List<Order>.from((json['orders'] as List<Map<String, dynamic>>).map((x) => Order.fromJson(x)));
+      var orders = <Order>[];
+      json['products'].forEach((v) {
+        orders.add(Order.fromJson(v));
+      });
       return StoreCustomersListOrdersRes(orders);
     }
 
