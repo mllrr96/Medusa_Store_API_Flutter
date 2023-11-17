@@ -22,12 +22,12 @@ class StoreCollectionsListRes {
 
   factory StoreCollectionsListRes.fromJson(json) {
     if (json['collections'] != null) {
-      final collection = List<ProductCollection>.from(
-          (json['collections'] as List<Map<String, dynamic>>).map((x) => ProductCollection.fromJson(x)));
-
-      return StoreCollectionsListRes(collection);
+      var collections = <ProductCollection>[];
+      json['collections'].forEach((v) {
+        collections.add(ProductCollection.fromJson(v));
+      });
+      return StoreCollectionsListRes(collections);
     }
-
     return StoreCollectionsListRes(null);
   }
 
