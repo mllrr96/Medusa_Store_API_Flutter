@@ -22,7 +22,7 @@ class StoreCustomersListOrdersRes {
   factory StoreCustomersListOrdersRes.fromJson(json) {
     if (json['orders'] != null) {
       var orders = <Order>[];
-      json['products'].forEach((v) {
+      json['orders'].forEach((v) {
         orders.add(Order.fromJson(v));
       });
       return StoreCustomersListOrdersRes(orders);
