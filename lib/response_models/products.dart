@@ -2,14 +2,17 @@ import '../store_models/store/index.dart';
 
 class StoreProductsListRes {
   final List<Product>? products;
-  StoreProductsListRes(this.products);
+  final int? count;
+  final int? limit;
+  final int? offset;
+  StoreProductsListRes(this.products, {this.count, this.limit, this.offset});
   factory StoreProductsListRes.fromJson(json) {
     if (json['products'] != null) {
       var products = <Product>[];
       json['products'].forEach((v) {
         products.add(Product.fromJson(v));
       });
-      return StoreProductsListRes(products);
+      return StoreProductsListRes(products, count: json['count'], limit: json['limit'], offset: json['offset']);
     }
 
     return StoreProductsListRes(null);
