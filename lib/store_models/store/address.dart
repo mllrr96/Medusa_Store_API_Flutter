@@ -65,7 +65,7 @@ class Address {
   /// Phone number
   ///
   /// Example: 16128234334802
-  final int? phone;
+  final String? phone;
 
   /// The date with timezone at which the resource was created.
   final DateTime? createdAt;
