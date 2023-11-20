@@ -22,7 +22,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -49,7 +49,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCompleteCartRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -69,7 +69,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -92,7 +92,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -115,7 +115,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -139,7 +139,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -162,7 +162,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -183,7 +183,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -208,7 +208,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error) {
       log(error.toString());
@@ -231,7 +231,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -258,7 +258,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -291,7 +291,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -321,7 +321,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -348,7 +348,7 @@ class CartsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCartsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);

@@ -25,7 +25,7 @@ class ProductsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreProductsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -49,7 +49,7 @@ class ProductsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreProductsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -72,7 +72,7 @@ class ProductsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StorePostSearchRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

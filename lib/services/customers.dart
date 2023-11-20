@@ -20,7 +20,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -42,7 +42,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error) {
       log(error.toString());
@@ -63,7 +63,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -86,7 +86,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersListOrdersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -108,7 +108,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -131,7 +131,7 @@ class CustomersResource extends BaseResource {
       if (response.statusCode == 200) {
         return response.data;
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);

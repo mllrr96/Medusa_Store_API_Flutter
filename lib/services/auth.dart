@@ -25,7 +25,7 @@ class AuthResource extends BaseResource {
         prefs.setString('Cookie', cookie);
         return StoreAuthRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
@@ -43,10 +43,11 @@ class AuthResource extends BaseResource {
         '/store/auth',
       );
       if (response.statusCode != 200) {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error) {
       log(error.toString());
+      rethrow;
     }
   }
 
@@ -64,7 +65,7 @@ class AuthResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreAuthRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error) {
       log(error.toString());
@@ -84,7 +85,7 @@ class AuthResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreGetAuthEmailRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error) {
       log(error.toString());

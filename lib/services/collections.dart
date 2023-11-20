@@ -20,7 +20,7 @@ class CollectionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCollectionsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -46,7 +46,7 @@ class CollectionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCollectionsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

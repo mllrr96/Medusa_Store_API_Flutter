@@ -22,7 +22,7 @@ class ShippingOptionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreShippingOptionsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -47,7 +47,7 @@ class ShippingOptionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreShippingOptionsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

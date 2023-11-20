@@ -21,7 +21,7 @@ class ReturnReasonsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreReturnReasonsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -45,7 +45,7 @@ class ReturnReasonsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreReturnReasonsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

@@ -20,7 +20,7 @@ class RegionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreRegionsListRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -44,7 +44,7 @@ class RegionsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreRegionsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

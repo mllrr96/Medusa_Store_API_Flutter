@@ -21,7 +21,7 @@ class OrdersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreOrdersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -44,7 +44,7 @@ class OrdersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreOrdersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
@@ -69,7 +69,7 @@ class OrdersResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreOrdersRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);

@@ -20,7 +20,7 @@ class PaymentMethodsResource extends BaseResource {
       if (response.statusCode == 200) {
         return StoreCustomersListPaymentMethodsRes.fromJson(response.data);
       } else {
-        throw response.statusCode!;
+        throw response;
       }
     } catch (error,stackTrace) {
       log(error.toString(),stackTrace:stackTrace);
