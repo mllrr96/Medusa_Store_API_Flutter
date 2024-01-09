@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:medusa_store_flutter/store_models/store/address.dart';
+
 import '../request_models/index.dart';
 import '../response_models/index.dart';
 import 'base.dart';
@@ -16,7 +18,7 @@ class CustomersResource extends BaseResource {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post('/store/customers', data: req);
+      final response = await client.post('/store/customers', data: req?.toJson());
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
@@ -59,7 +61,7 @@ class CustomersResource extends BaseResource {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post('/store/customers/me', data: req);
+      final response = await client.post('/store/customers/me', data: req?.toJson());
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
@@ -104,7 +106,7 @@ class CustomersResource extends BaseResource {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post('/store/customers/password-reset', data: req);
+      final response = await client.post('/store/customers/password-reset', data: req?.toJson());
       if (response.statusCode == 200) {
         return StoreCustomersRes.fromJson(response.data);
       } else {
@@ -127,7 +129,67 @@ class CustomersResource extends BaseResource {
       if (customHeaders != null) {
         client.options.headers.addAll(customHeaders);
       }
-      final response = await client.post('/store/customers/password-token', data: req);
+      final response = await client.post('/store/customers/password-token', data: req?.toJson());
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Add a Shipping Address to a Customer's saved addresses.
+  Future addShippingAddress(
+      { required Address address, Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.post('/store/customers/me/addresses', data: address.toJson());
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+  /// Update the logged-in customer's saved Shipping Address's details.
+  Future updateShippingAddress(
+      {
+        required String addressId,
+        required Address address, Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.post('/store/customers/me/addresses/$addressId', data: address.toJson());
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw response;
+      }
+    } catch (error, stackTrace) {
+      log(error.toString(), stackTrace: stackTrace);
+      rethrow;
+    }
+  }
+
+  /// Delete an Address from the Customer's saved addresses.
+  Future deleteShippingAddress(
+      {
+        required String addressId,
+       Map<String, dynamic>? customHeaders}) async {
+    try {
+      if (customHeaders != null) {
+        client.options.headers.addAll(customHeaders);
+      }
+      final response = await client.delete('/store/customers/me/addresses/$addressId');
       if (response.statusCode == 200) {
         return response.data;
       } else {
